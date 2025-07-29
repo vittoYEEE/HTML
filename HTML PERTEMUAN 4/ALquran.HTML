@@ -1,130 +1,115 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Al-Qur'an NU Style</title>
+    <title>Game Mobil-Mobilan</title>
     <style>
-      body {
-        font-family: "Segoe UI", sans-serif;
-        background: #f9f9f9;
+      * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
       }
 
-      .container {
-        max-width: 900px;
-        margin: auto;
-        padding: 20px;
-        background: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      body {
+        background: #222;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
       }
 
-      h1 {
+      .game-area {
+        position: relative;
+        width: 300px;
+        height: 500px;
+        background: #333;
+        overflow: hidden;
+        border: 3px solid #fff;
+      }
+
+      .car {
+        width: 50px;
+        height: 100px;
+        background: red;
+        position: absolute;
+        bottom: 10px;
+        left: 125px;
+        border-radius: 5px;
+      }
+
+      .obstacle {
+        width: 50px;
+        height: 100px;
+        background: yellow;
+        position: absolute;
+        top: -120px;
+        left: 0;
+        border-radius: 5px;
+      }
+
+      .game-over {
+        position: absolute;
+        width: 100%;
         text-align: center;
-        margin-bottom: 20px;
-        color: #2c3e50;
-      }
-
-      select,
-      button {
-        padding: 10px;
-        font-size: 16px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-      }
-
-      button {
-        background: #3498db;
+        top: 40%;
         color: white;
-        cursor: pointer;
-        border: none;
-        margin-left: 10px;
-      }
-
-      button:hover {
-        background: #2980b9;
-      }
-
-      .ayat {
-        border-bottom: 1px solid #ddd;
-        padding: 20px 0;
-      }
-
-      .arab {
-        font-size: 24px;
-        text-align: right;
-        direction: rtl;
-        color: #222;
-      }
-
-      .arti {
-        margin-top: 8px;
-        font-size: 16px;
-        color: #444;
-      }
-
-      .tafsir {
-        margin-top: 10px;
-        font-size: 14px;
-        background: #f1f1f1;
-        padding: 10px;
-        border-left: 4px solid #3498db;
-        color: #333;
+        font-size: 2rem;
+        display: none;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1>Al-Qur'an Digital - NU Style</h1>
-
-      <div>
-        <select id="surahSelect"></select>
-        <button onclick="tampilkanSurah()">Tampilkan</button>
-      </div>
-
-      <div id="hasilAyat"></div>
+    <div class="game-area" id="gameArea">
+      <div class="car" id="car"></div>
+      <div class="obstacle" id="obstacle"></div>
+      <div class="game-over" id="gameOver">Game Over</div>
     </div>
 
     <script>
-      const select = document.getElementById("surahSelect");
-      const hasil = document.getElementById("hasilAyat");
+      const car = document.getElementById("car");
+      const obstacle = document.getElementById("obstacle");
+      const gameOverText = document.getElementById("gameOver");
+      const gameArea = document.getElementById("gameArea");
 
-      async function loadSurahList() {
-        const res = await fetch("https://quran-api-id.vercel.app/surahs");
-        const data = await res.json();
-        data.forEach((s) => {
-          const opt = document.createElement("option");
-          opt.value = s.number;
-          opt.textContent = `${s.number}. ${s.name.transliteration.id}`;
-          select.appendChild(opt);
-        });
+      let carLeft = 125;
+      let obstacleTop = -120;
+      let obstacleLeft = Math.floor(Math.random() * 3) * 100;
+
+      function moveCar(e) {
+        if (e.key === "ArrowLeft" && carLeft > 0) {
+          carLeft -= 100;
+        } else if (e.key === "ArrowRight" && carLeft < 200) {
+          carLeft += 100;
+        }
+        car.style.left = carLeft + "px";
       }
 
-      async function tampilkanSurah() {
-        const nomor = select.value;
-        hasil.innerHTML = "<p>Memuat ayat...</p>";
-        const res = await fetch(
-          `https://quran-api-id.vercel.app/surahs/${nomor}`
-        );
-        const data = await res.json();
+      document.addEventListener("keydown", moveCar);
 
-        hasil.innerHTML = `<h2>${data.name.long} (${data.name.transliteration.id})</h2>`;
+      function moveObstacle() {
+        if (obstacleTop > 500) {
+          obstacleTop = -100;
+          obstacleLeft = Math.floor(Math.random() * 3) * 100;
+          obstacle.style.left = obstacleLeft + "px";
+        } else {
+          obstacleTop += 5;
+        }
 
-        data.verses.forEach((v) => {
-          const div = document.createElement("div");
-          div.className = "ayat";
-          div.innerHTML = `
-          <div class="arab">${v.text.arab}</div>
-          <div class="arti">Terjemahan: ${v.translation.id}</div>
-          <div class="tafsir"><strong>Tafsir Wajiz:</strong> (Contoh tafsir bisa ditambahkan di sini)</div>
-        `;
-          hasil.appendChild(div);
-        });
+        obstacle.style.top = obstacleTop + "px";
+
+        // Deteksi tabrakan
+        if (
+          obstacleTop + 100 >= 400 && // posisi mobil
+          obstacleLeft === carLeft
+        ) {
+          gameOverText.style.display = "block";
+          clearInterval(gameLoop);
+          document.removeEventListener("keydown", moveCar);
+        }
       }
 
-      loadSurahList();
+      const gameLoop = setInterval(moveObstacle, 30);
     </script>
   </body>
 </html>
