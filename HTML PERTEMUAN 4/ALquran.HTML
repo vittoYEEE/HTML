@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Al-Qur'an NU Style</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f9f9f9;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #2c3e50;
+      }
+
+      select,
+      button {
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+
+      button {
+        background: #3498db;
+        color: white;
+        cursor: pointer;
+        border: none;
+        margin-left: 10px;
+      }
+
+      button:hover {
+        background: #2980b9;
+      }
+
+      .ayat {
+        border-bottom: 1px solid #ddd;
+        padding: 20px 0;
+      }
+
+      .arab {
+        font-size: 24px;
+        text-align: right;
+        direction: rtl;
+        color: #222;
+      }
+
+      .arti {
+        margin-top: 8px;
+        font-size: 16px;
+        color: #444;
+      }
+
+      .tafsir {
+        margin-top: 10px;
+        font-size: 14px;
+        background: #f1f1f1;
+        padding: 10px;
+        border-left: 4px solid #3498db;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Al-Qur'an Digital - NU Style</h1>
+
+      <div>
+        <select id="surahSelect"></select>
+        <button onclick="tampilkanSurah()">Tampilkan</button>
+      </div>
+
+      <div id="hasilAyat"></div>
+    </div>
+
+    <script>
+      const select = document.getElementById("surahSelect");
+      const hasil = document.getElementById("hasilAyat");
+
+      async function loadSurahList() {
+        const res = await fetch("https://quran-api-id.vercel.app/surahs");
+        const data = await res.json();
+        data.forEach((s) => {
+          const opt = document.createElement("option");
+          opt.value = s.number;
+          opt.textContent = `${s.number}. ${s.name.transliteration.id}`;
+          select.appendChild(opt);
+        });
+      }
+
+      async function tampilkanSurah() {
+        const nomor = select.value;
+        hasil.innerHTML = "<p>Memuat ayat...</p>";
+        const res = await fetch(
+          `https://quran-api-id.vercel.app/surahs/${nomor}`
+        );
+        const data = await res.json();
+
+        hasil.innerHTML = `<h2>${data.name.long} (${data.name.transliteration.id})</h2>`;
+
+        data.verses.forEach((v) => {
+          const div = document.createElement("div");
+          div.className = "ayat";
+          div.innerHTML = `
+          <div class="arab">${v.text.arab}</div>
+          <div class="arti">Terjemahan: ${v.translation.id}</div>
+          <div class="tafsir"><strong>Tafsir Wajiz:</strong> (Contoh tafsir bisa ditambahkan di sini)</div>
+        `;
+          hasil.appendChild(div);
+        });
+      }
+
+      loadSurahList();
+    </script>
+  </body>
+</html>
