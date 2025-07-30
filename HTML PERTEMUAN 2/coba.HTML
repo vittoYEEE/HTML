@@ -1,123 +1,153 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dzikir Pagi & Petang</title>
-    <style>
-      body {
-        font-family: "Arial", sans-serif;
-        background: #f0f4f8;
-        color: #333;
-        margin: 0;
-        padding: 0;
-      }
-      header {
-        background: #0d9488;
-        color: white;
-        text-align: center;
-        padding: 30px 20px;
-      }
-      h1 {
-        margin: 0;
-        font-size: 2.2em;
-      }
-      section {
-        max-width: 800px;
-        margin: auto;
-        padding: 30px 20px;
-        background: white;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        margin-top: 20px;
-        border-radius: 10px;
-      }
-      h2 {
-        color: #0d9488;
-        border-bottom: 2px solid #0d9488;
-        padding-bottom: 5px;
-        margin-bottom: 20px;
-      }
-      .dzikir {
-        margin-bottom: 30px;
-      }
-      .arabic {
-        font-size: 1.3em;
-        color: #222;
-        direction: rtl;
-        text-align: right;
-        margin-bottom: 10px;
-      }
-      .latin,
-      .arti {
-        margin: 5px 0;
-        line-height: 1.5;
-      }
-      footer {
-        text-align: center;
-        background: #0d9488;
-        color: white;
-        padding: 15px;
-        margin-top: 30px;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>Dzikir Pagi dan Petang</h1>
-      <p>Amalan harian dari sunnah Rasulullah ﷺ</p>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vittorio Veneto Setiyantara - Portofolio</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-    <section>
-      <h2>🌤️ Dzikir Pagi</h2>
+    body {
+      background-color: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+    }
 
-      <div class="dzikir">
-        <div class="arabic">
-          اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...
-        </div>
-        <div class="latin">
-          Allahu laa ilaaha illa huwa al-hayyul qayyuum...
-        </div>
-        <div class="arti">
-          "Allah, tidak ada Tuhan (yang berhak disembah) melainkan Dia yang
-          hidup kekal lagi terus-menerus mengurus makhluk-Nya..."
-        </div>
+    header {
+      background: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background: #222;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      color: white;
+      padding: 15px 20px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      background: #444;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .contact-form button {
+      padding: 10px 20px;
+      background: #111;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background: #444;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Vittorio Veneto Setiyantara</h1>
+    <p>Videografer | Web Developer | Siswa Pondok</p>
+  </header>
+
+  <nav>
+    <a href="#home">Beranda</a>
+    <a href="#about">Tentang</a>
+    <a href="#projects">Projek</a>
+    <a href="#contact">Kontak</a>
+  </nav>
+
+  <section id="home">
+    <h2>Selamat datang di portofolio saya!</h2>
+    <p>Ini adalah tempat saya menunjukkan karya, projek, dan perjalanan belajar saya di dunia videografi dan web development.</p>
+  </section>
+
+  <section id="about">
+    <h2>Tentang Saya</h2>
+    <p>Nama saya Vittorio Veneto Setiyantara. Saya adalah siswa di pondok pesantren yang memiliki minat dalam videografi dan pengembangan web. Saya sedang membangun karya dan meningkatkan hafalan Al-Qur’an serta keterampilan digital saya.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projek Saya</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Website Toko Havza</h3>
+        <p>Website fashion yang saya kembangkan untuk tugas sekolah menggunakan HTML, CSS, dan JavaScript.</p>
       </div>
-
-      <div class="dzikir">
-        <div class="arabic">
-          قُلْ هُوَ اللَّهُ أَحَدٌ (3×)<br />
-          قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ (3×)<br />
-          قُلْ أَعُوذُ بِرَبِّ النَّاسِ (3×)
-        </div>
-        <div class="latin">
-          Qul huwallahu ahad (3×)<br />
-          Qul a’udzu birabbil falaq (3×)<br />
-          Qul a’udzu birabbin naas (3×)
-        </div>
-        <div class="arti">
-          "Katakanlah: Dialah Allah Yang Maha Esa..." dst.<br />
-          Dibaca masing-masing tiga kali untuk perlindungan dari segala
-          kejahatan.
-        </div>
+      <div class="card">
+        <h3>Versen Apparel</h3>
+        <p>Brand pakaian milik saya sendiri yang sedang saya bangun, mulai dari logo hingga katalog digital.</p>
       </div>
-
-      <div class="dzikir">
-        <div class="arabic">
-          اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا،
-          وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ
-        </div>
-        <div class="latin">
-          Allahumma bika ashbahnaa, wabika amsainaa, wabika nahyaa, wabika
-          namuutu, wa ilaykan nusyuur.
-        </div>
-        <div class="arti">
-          "Ya Allah, dengan-Mu kami memasuki pagi, dengan-Mu kami memasuki
-          petang, dengan-Mu kami hidup, dan dengan-Mu kami mati, dan kepada-Mu
-          tempat kembali."
-        </div>
+      <div class="card">
+        <h3>Video Dokumenter Pondok</h3>
+        <p>Projek videografi untuk mengenalkan kegiatan dan suasana pondok secara visual.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer>&copy; 2025 Dzikir Harian - Vittorio</footer>
-  </body>
+  <section id="contact">
+    <h2>Kontak</h2>
+    <form class="contact-form" onsubmit="return kirimForm()">
+      <input type="text" placeholder="Nama Anda" required>
+      <input type="email" placeholder="Email Anda" required>
+      <textarea rows="5" placeholder="Pesan Anda" required></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Vittorio Veneto Setiyantara. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function kirimForm() {
+      alert("Terima kasih! Pesanmu berhasil dikirim (simulasi saja).");
+      return false;
+    }
+  </script>
+</body>
 </html>
