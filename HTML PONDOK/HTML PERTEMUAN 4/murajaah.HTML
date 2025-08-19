@@ -1,13 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>pertemuan ke 4</title>
-  </head>
-  <body>
-    <h1 style="background-color: red">test</h1>
-    <p style="background-color: blue">hello</p>
-    <a style="background-color: green" href="">home </a>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Website Pribadi Vitto</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+</head>
+<body>
+<nav class="container-fluid">
+  <ul>
+    <li><strong>Vitto</strong></li>
+  </ul>
+  <ul>
+    <li><a href="#profil">Profil</a></li>
+    <li><a href="#portofolio">Portofolio</a></li>
+    <li><a href="#kontak" role="button">Kontak</a></li>
+  </ul>
+</nav>
 
-    <a style="background-color: black" href="">test </a>
-  </body>
+<main class="container">
+  <div class="grid">
+    <section id="profil">
+      <hgroup>
+        <h2>Halo, saya Vitto</h2>
+        <h3>Desainer & Pengembang Web</h3>
+      </hgroup>
+      <p>Saya adalah seorang profesional kreatif yang berfokus pada pembuatan desain web modern dan fungsional. Website ini menjadi tempat saya berbagi karya dan ide.</p>
+      <figure>
+        <img src="https://source.unsplash.com/800x500/?person,workspace" alt="Foto Profil" />
+        <figcaption><a href="https://unsplash.com" target="_blank">Foto oleh Unsplash</a></figcaption>
+      </figure>
+
+      <h3>Keahlian</h3>
+      <p>UI/UX Design, HTML, CSS, JavaScript, dan pengembangan web responsif.</p>
+
+      <h3>Pengalaman</h3>
+      <p>Lebih dari 5 tahun bekerja di industri kreatif, mengerjakan proyek dari berbagai sektor mulai dari startup hingga perusahaan besar.</p>
+    </section>
+  </div>
+
+  <div class="grid" id="portofolio">
+    <section>
+      <hgroup>
+        <h2>Portofolio</h2>
+        <h3>Karya Pilihan</h3>
+      </hgroup>
+      <figure>
+        <img src="https://source.unsplash.com/800x500/?website,design" alt="Contoh Proyek" />
+        <figcaption><a href="https://unsplash.com" target="_blank">Foto oleh Unsplash</a></figcaption>
+      </figure>
+      <p>Berbagai proyek yang saya kerjakan mencerminkan fokus pada estetika, kegunaan, dan performa website.</p>
+    </section>
+  </div>
+</main>
+
+<section aria-label="Subscribe example" id="kontak">
+  <div class="container">
+    <article>
+      <hgroup>
+        <h2>Hubungi Saya</h2>
+        <h3>Kirim pesan untuk kolaborasi</h3>
+      </hgroup>
+      <form class="grid">
+        <input type="text" id="firstname" name="firstname" placeholder="Nama Anda" aria-label="Nama Anda" required />
+        <input type="email" id="email" name="email" placeholder="Email Anda" aria-label="Email Anda" required />
+        <button type="submit" onclick="event.preventDefault()">Kirim</button>
+      </form>
+    </article>
+  </div>
+</section>
+
+<footer class="container">
+  <small><a href="#">Kebijakan Privasi</a> • <a href="#">Syarat & Ketentuan</a></small>
+</footer>
+</body>
 </html>
