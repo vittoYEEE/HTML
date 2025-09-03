@@ -1,0 +1,37 @@
+h1,
+h2,
+h3 {
+  color: black;
+  font-family: sans-serif;
+  background-color: aqua;
+}
+
+body {
+/*     
+  background: #22c1c3;
+  background: linear-gradient(
+    90deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  ); */
+   background-image: url('./Black\ White\ Photo\ Collage\ Vision\ Board\ 2025\ Desktop\ Wallpaper.png');
+   background-size: 175%;
+   background-repeat: repeat-y;
+}
+
+
+.bg-title {
+  background-color: aqua;
+}
+p {
+  color: white;
+}
+
+input[type="text"] {
+  background-color: yellow;
+}
+
+footer {
+  color: whi;
+  background-color: whi;
+}

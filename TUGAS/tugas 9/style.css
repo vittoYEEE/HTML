@@ -1,19 +1,36 @@
-.bg-title{
-    font-family: sans-serif;
-    color: red;
+.bg-title {
+  font-family: sans-serif;
+  color: red;
 }
-.sub1{
-    font-family: sans-serif;
-    color: green;
+.sub1 {
+  font-family: sans-serif;
+  color: green;
 }
-p{
-    font-family: sans-serif;
+p {
+  font-family: sans-serif;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(18px);
 }
-.sub2{
-    font-family: sans-serif;
-    color: green;
+.sub2 {
+  font-family: sans-serif;
+  color: green;
 }
-.sub3{
-    font-family: sans-serif;
-    color: green;
+.sub3 {
+  font-family: sans-serif;
+  color: green;
+}
+body {
+  background: #22c1c3;
+  background: linear-gradient(
+    90deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+}
+body {
+  cursor: url("cursor1.png"), auto;
+}
+
+a:hover {
+  cursor: url("cursor2.png"), pointer;
 }
