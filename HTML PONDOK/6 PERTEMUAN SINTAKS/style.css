@@ -1,0 +1,20 @@
+p {
+  color: green;
+}
+/*color selector kode Hex*/
+h1 {
+  color: #ff5733;
+}
+/**/
+h2{
+    color: rgb(255, 99, 71);
+}
+div{
+background-color: rgba(255, 99, 71. o.5);
+}
+.HSL{
+    background: hsl(120, 100%, 50%);
+}
+.HSLA{
+    background: hsla(120, 100%, 50%, 0.7);
+}
