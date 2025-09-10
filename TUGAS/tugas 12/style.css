@@ -1,0 +1,97 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: white;
+  color: black;
+  position: sticky;
+  top: 0;
+}
+header nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  list-style: none;
+  background-color: white;
+  padding: 1rem;
+}
+header nav ul li {
+  display: flex;
+  text-decoration: none;
+  list-style: none;
+  margin: 20px;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: larger;
+}
+button {
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #0046ff;
+  color: white;
+  border: #0046ff solid;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.penjelasan {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("./asset/01_wakatobi_island-and-surrounding-cover.avif");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 600px;
+}
+.penjelasan h1 {
+  text-align: center;
+  color: white;
+  font-family: Impact, Arial Black, sans-serif;
+  font-size: 80px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 12%;
+}
+.penjelasan h3 {
+  text-align: center;
+  color: white;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  text-align: center;
+  padding-top: 2%;
+}
+.tentang img {
+  padding-top: 5%;
+  border-radius: 10px;
+}
+.penetapan {
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  padding-top: 7%;
+}
+.penetapan-penjelasan {
+  text-align: center;
+  padding-top: 1%;
+  padding-bottom: 20px;
+}
+.tentang img {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding-bottom: 10%;
+}
+.footer-terakhir{
+    text-align: center;
+    background-color: #33A1E0;
+    color: white;
+    padding: 1rem;
+}
