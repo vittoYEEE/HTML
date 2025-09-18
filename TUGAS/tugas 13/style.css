@@ -1,0 +1,42 @@
+.nav{
+    text-align: center;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    font-family: arial black;
+}
+.product {
+  display: flex;
+  margin: 20px;
+  justify-content: center;
+  padding-top: 10;
+}
+.jeruk {
+  text-align: center;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.jeruk h3 {
+  border: 5px black dashed;
+}
+.kiwi {
+  text-align: center;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.kiwi h3 {
+  border: 5px black dashed;
+}
+.mangga {
+  text-align: center;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.mangga h3 {
+  border: 5px black dashed;
+}

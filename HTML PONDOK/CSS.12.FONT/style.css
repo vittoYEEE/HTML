@@ -1,0 +1,68 @@
+h1 {
+  font-size: 24px;
+  color: slateblue;
+}
+.Font-Big {
+  font-size: x-large;
+}
+.Font-Small {
+  font-size: x-small;
+  color: steelblue;
+}
+.fontbold {
+  font-weight: bold;
+}
+.fontbolder {
+  font-weight: bolder;
+}
+.fontlighter {
+  font-weight: lighter;
+}
+.fontnormal {
+  font-weight: normal;
+}
+.fontweight {
+  font-size: xx-large;
+}
+.miring {
+  font-style: italic;
+}
+blockquote {
+  font-style: italic;
+  font-size: large;
+  color: dodgerblue;
+  padding: 10px;
+  width: 300px;
+  border: 3px dodgerblue solid;
+  border-radius: 10px;
+  text-align: left;
+}
+.sans {
+  font-family: sans-serif;
+  font-size: 40px;
+  color: green;
+}
+.serif {
+  font-family: serif;
+  font-size: 40px;
+  color: blue;
+}
+.monospace {
+  font-family: monospace;
+  font-size: 40px;
+  color: black;
+}
+.curcive {
+  font-family: cursive;
+  font-size: 40px;
+  color: red;
+}
+.fantasy {
+  font-family: fantasy;
+  font-size: 40px;
+  color: yellow;
+}
+.google {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: red;
+}
