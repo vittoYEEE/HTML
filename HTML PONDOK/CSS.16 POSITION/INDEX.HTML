@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Box</title>
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;   /* biar turun ke bawah kalau sempit */
+      gap: 20px;
+      justify-content: center; /* biar rata tengah */
+    }
+
+    .box {
+      flex: 1 1 300px;   /* lebar minimum 300px, sisanya fleksibel */
+      height: 150px;
+      box-sizing: border-box;
+      text-align: center;
+      line-height: 150px; /* biar teksnya rata tengah vertikal */
+      font-weight: bold;
+    }
+
+    #box1 { background: yellow; }
+    #box2 { background: orange; }
+    #box3 { background: lightblue; }
+    #box4 { background: lightgreen; }
+  </style>
+</head>
+<body>
+  <h1>Responsive Box</h1>
+  <div class="container">
+    <div class="box" id="box1">Box 1</div>
+    <div class="box" id="box2">Box 2</div>
+    <div class="box" id="box3">Box 3</div>
+    <div class="box" id="box4">Box 4</div>
+  </div>
+</body>
+</html>

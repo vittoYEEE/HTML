@@ -1,0 +1,12 @@
+.row {
+  display: flex; /* bikin sejajar horizontal */
+  gap: 20px; /* jarak antar box */
+  margin-bottom: 20px; /* jarak antar baris */
+}
+#box1 {
+  width: 300px;
+  height: 150px;
+  border: 0;
+  background-color: blue;
+  border: 5px solid black;
+}
