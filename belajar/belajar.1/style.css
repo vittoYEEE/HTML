@@ -1,0 +1,75 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.navbar {
+  background-color: black; /* Warna latar belakang navbar */
+  overflow: hidden; /* Sembunyikan konten yang meluap */
+  position: sticky; /* Ini yang membuatnya sticky */
+  top: 0; /* Tentukan dari atas layar */
+  z-index: 1; /* Pastikan navbar di atas konten lain */
+}
+
+.navbar ul {
+  list-style-type: none; /* Hapus bullet points */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Menata item dalam satu baris */
+  justify-content: center;
+  height: 100px;
+}
+
+.navbar li {
+  padding: 10px;
+  float: left; /* Menata item daftar secara horizontal */
+}
+
+.navbar li a {
+  display: block; /* Agar link mengisi seluruh area */
+  color: white; /* Warna teks link */
+  text-align: center;
+  padding: 14px 16px; /* Padding untuk setiap item link */
+  text-decoration: none; /* Hapus garis bawah link */
+  font-family: arial black;
+  font-size: x-large;
+}
+
+.navbar li a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Gaya untuk konten agar bisa digulir */
+.content {
+  padding: 20px;
+  height: 1000px; /* Tinggi konten yang cukup untuk bisa digulir */
+  background-color: #f1f1f1;
+}
+.section1 {
+  height: 500px;
+  width: 100%;
+  background: #ffffff;
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(66, 64, 64, 1) 26%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+.nama {
+  text-align: center;
+  color: white;
+  font-size: 70px;
+  padding-top: 70px;
+  font-family: arial;
+}
+.section1 p {
+  color: white;
+  text-align: center;
+  font-size: x-large;
+  padding: 10px;
+  font-family: arial black;
+}
+.kumpul.box{
+  display: flex;
+}
