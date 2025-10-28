@@ -1,0 +1,70 @@
+ul.cercle {
+  list-style-type: circle;
+}
+ul.square {
+  list-style-type: square;
+}
+ol.upper-roman {
+  list-style-type: upper-roman;
+}
+ol.lower-alpha {
+  list-style-type: lower-alpha;
+}
+ul.remove-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.horizontal-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+}
+.horizontal-menu li {
+  margin: 0 15px;
+}
+.horizontal-menu li a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.horizontal-menu li a:hover {
+  background-color: #575757;
+  border-radius: 4px;
+}
+.vertical-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 200px;
+  background-color: #333;
+  margin-top: 10px;
+}
+.vertical-menu li {
+  border-bottom: 1px solid #444;
+}
+.vertical-menu li a {
+  display: block;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: #333;
+}
+.vertical-menu li a:hover {
+  background-color: #575757;
+}
+ul.outside {
+  list-style-position: outside;
+}
+ul.inside {
+  list-style-position: inside;
+}
+.list-image {
+  list-style-image: url(./asset/minuman\ biasa.jpg);
+}
