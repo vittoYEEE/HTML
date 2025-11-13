@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tugas 20 (bikin download cv)</title>
+  </head>
+  <body>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      img {
+        border-radius: 100%;
+        width: 200px;
+        height: 200px;
+      }
+      .text {
+        display: flex;
+        flex-direction: column;
+        font-size: 40px;
+        gap: 10 px;
+        animation: fadeUp 700ms ease forwards;
+      }
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .nama {
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        color: white;
+      }
+      .graphic-designer {
+        font-family: "Lato", sans-serif;
+        font-weight: 100;
+        font-style: normal;
+        color: white;
+      }
+      .download-cv {
+        padding: 10px;
+        width: 150px;
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        border-radius: 100px;
+        border: none;
+        background-color: white;
+        font-size: 16px;
+        transition: 0.5s ease;
+      }
+      .download-cv:hover {
+        transform: translateY(10px);
+      }
+      .hire-me {
+        background-color: #59ac77;
+        padding: 10px;
+        width: 100px;
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        border: none;
+        color: white;
+        border-radius: 50px;
+        font-size: 16px;
+        transition: 0.5s ease;
+      }
+      .hire-me:hover {
+        transform: translateY(10px);
+      }
+      .button-text {
+        display: flex;
+        gap: 10px;
+      }
+      .vertikal {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .horizontal {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        padding: 20px;
+        background: #8800ff;
+        background: linear-gradient(
+          90deg,
+          rgba(136, 0, 255, 1) 0%,
+          rgba(255, 0, 0, 1) 50%,
+          rgba(255, 229, 0, 1) 100%
+        );
+        justify-content: center;
+      }
+    </style>
+    <div class="horizontal">
+      <img src="./asset/18b9ffb2a8a791d50213a9d595c4dd52.jpg" alt="foto" />
+      <div class="vertikal">
+        <div class="text">
+          <span class="nama">vittorio veneto setiyantara</span>
+          <span class="graphic-designer">graphic designer & web developer</span>
+        </div>
+        <div class="button-text">
+          <button class="download-cv">download cv</button>
+          <button class="hire-me">hire me</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

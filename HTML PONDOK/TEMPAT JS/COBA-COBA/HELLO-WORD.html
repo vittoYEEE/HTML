@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Full JS</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: sans-serif;
+        transition: background-color 1s;
+      }
+
+      .fade {
+        opacity: 0;
+        transition: opacity 1.5s ease;
+      }
+
+      .show {
+        opacity: 1;
+      }
+
+      img {
+        width: 200px;
+        border-radius: 10px;
+        margin-top: 10px;
+        transition: transform 1s ease;
+      }
+
+      img.zoom {
+        transform: scale(1.05);
+      }
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        background-color: dodgerblue;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: royalblue;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // bikin elemen awal
+      let judul = document.createElement("h1");
+      judul.textContent = "Masukkan password mu";
+      document.body.appendChild(judul);
+
+      let tombol = document.createElement("button");
+      tombol.textContent = "login dulu";
+      document.body.appendChild(tombol);
+
+      let hasil = document.createElement("div");
+      document.body.appendChild(hasil);
+
+      tombol.onclick = function () {
+        let password = prompt("Masukkan password:");
+
+        if (password === "12345") {
+          let nama = prompt("Masukkan nama kamu:");
+          let umur = Number(prompt("Berapa umur kamu?"));
+
+          if (umur >= 10) {
+            alert("Selamat datang, " + nama + "! 🎉");
+
+            document.body.style.backgroundColor = "lightblue";
+
+            hasil.innerHTML = `
+              <div class="fade" id="konten">
+                <h2>Halo ${nama}, umur kamu ${umur} tahun ya!</h2>
+                <img src="https://i.imgur.com/OQn1P7C.jpg" alt="Pemandangan">
+              </div>
+            `;
+
+            setTimeout(() => {
+              document.getElementById("konten").classList.add("show");
+              document.querySelector("img").classList.add("zoom");
+            }, 100);
+          } else {
+            alert("Maaf " + nama + ", kamu belum cukup umur untuk login 😅");
+            document.body.style.backgroundColor = "lightred";
+          }
+        } else {
+          alert("Password salah!");
+          document.body.style.backgroundColor = "lightcoral";
+        }
+      };
+    </script>
+    <body>
+      <h1>Halaman Utama</h1>
+      <button onclick="tambah()">Tambah Tulisan</button>
+    </body>
+
+    <script>
+      function tambah() {
+        let teksBaru = document.createElement("p"); // buat <p>
+        teksBaru.textContent = "Halo, ini teks baru!"; // isi teksnya
+        document.body.appendChild(teksBaru); // tempel ke body halaman
+      }
+    </script>
+  </body>
+</html>
