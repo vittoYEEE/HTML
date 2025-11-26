@@ -1,0 +1,111 @@
+.container {
+  width: 510px;
+  height: 300px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)),
+    url("./asset/wallpaperflare.com_wallpaper\ \(1\).jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 700px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+.isi {
+  display: flex;
+  flex-direction: column;
+}
+.profile {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 20px auto;
+  border: 5px solid white;
+  margin-top: 70px;
+  transition: 1s;
+}
+.profile:hover {
+  transform: rotate(360deg) scale(1.2);
+}
+.nama {
+  text-align: center;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: white;
+  width: 500px;
+  height: 500px;
+  border: 5px solid white;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  gap: 5px;
+}
+.programer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.programer img {
+  width: 50px;
+  height: 50px;
+}
+.uiux {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.uiux img {
+  width: 50px;
+  height: 50px;
+}
+.pengusaha {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.pengusaha img {
+  width: 50px;
+  height: 50px;
+}
+.kemauan {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  font-weight: 100;
+  font-size: 16px;
+}
+
+h1 {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: xx-large;
+  transition: 0.5s ease;
+}
+h1:hover {
+ transform: translateY(-10px) scale(1.1); 
+}
+.penjelasaan {
+  padding: 20px;
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+.sm {
+  display: flex;
+  gap: 10px;
+  padding: 50px;
+}
+.sm img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  margin: 0 auto;
+  transition: 0.3s;
+}
+.sm img:hover {
+  transform: scale(1.5);
+}

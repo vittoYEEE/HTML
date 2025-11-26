@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 50px;
+}
+.box-1:hover {
+  transform: rotate(45deg);
+}
+.box-1 {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  transition: 0.5s ease;
+}
+.box-scale {
+  height: 100px;
+  width: 100px;
+  background-color: blue;
+  transition: 0.5s ease;
+}
+.box-scale:hover {
+  transform: scale(1.3);
+}
+
+.box-translate {
+  height: 100px;
+  width: 100px;
+  background-color: green;
+  transition: 0.5s ease;
+}
+.box-translate:hover {
+  transform: translate(50px, 50px);
+}
+.box-skew {
+  height: 100px;
+  width: 100px;
+  background-color: yellow;
+  transition: 0.5s ease;
+}
+.box-skew:hover {
+  transform: skewX(20deg);
+}
+.gabungan {
+  width: 100px;
+  height: 100px;
+  background-color: purple;
+  transition: 0.5s ease;
+}
+.gabungan:hover {
+  transform: rotate(45deg) scale(1.2) translateY(-10px);
+}
