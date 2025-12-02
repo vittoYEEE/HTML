@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tugas poster</title>
+  </head>
+  <style>
+    h1 {
+      text-align: center;
+      font-family: dk lemon yellow sun;
+      font-size: 100px;
+      transition: 0.5s;
+    }
+    h1:hover {
+      transform: scale(1.1) translateY(-10px) rotate(5deg);
+    }
+    span {
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      gap: 10px;
+      font-size: 2em;
+      font-family: Arial, sans-serif;
+      background-color: black;
+      width: 500px;
+      height: 500px;
+      justify-content: center;
+      margin: auto;
+      border-radius: 20px;
+      transition: 0.5s;
+    }
+    .container:hover {
+      transform: scale(1.1) translateY(-10px);
+    }
+    .solusi {
+      color: white;
+      font-size: 70px;
+      font-weight: 600;
+      font-family: DK Lemon Yellow Sun;
+    }
+    .masalah {
+      color: white;
+      font-size: 50px;
+      font-family: DK Lemon Yellow Sun;
+    }
+    .adalah {
+      font-family: DK Lemon Yellow Sun;
+      font-size: 30px;
+      color: white;
+    }
+    .sholat {
+      font-family: DK Lemon Yellow Sun;
+      font-size: 120px;
+      color: yellow;
+      animation: garis 0.5s ease-in-out infinite alternate;
+      transition: 0.5s;
+    }
+    @keyframes garis {
+      from {
+        text-decoration: none;
+      }
+      to {
+        text-decoration: underline 5px yellow;      
+      }
+    }
+    .sholat:hover {
+      transform: scale(1.2) translateY(-10px) rotate(-5deg);
+    }
+    .tombol {
+      width: 40px;
+      height: 40px;
+      margin: 10px;
+      transition: 0.3s;
+    }
+    .tombol:hover {
+      transform: scale(1.2) translateY(-5px);
+    }
+    .icon {
+      display: flex;
+      justify-content: space-between;
+    }
+    .container-1 {
+      width: 500px;
+      margin: auto;
+      border: 3px solid grey;
+      border-radius: 20px;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideup 0.5s ease-in forwards;
+    }
+
+    @keyframes slideup {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    p {
+      font-family: Arial, sans-serif;
+      font-weight: 300;
+      text-align: justify;
+      font-size: 18px;
+      margin-top: 10px;
+      color: grey;
+    }
+    .gambar-profile {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid grey;
+      margin-right: 10px;
+      transition: 0.5s ease;
+    }
+    .gambar-profile:hover {
+      transform: scale(1.2) translateY(-10px) rotate(360deg);
+    }
+    .vertical {
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+    }
+    .proflie {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .pertama {
+      font-size: 20px;
+      float: left;
+    }
+    .kota {
+      font-size: 14px;
+      color: grey;
+      float: left;
+    }
+  </style>
+  <body>
+    <h1>kata kata hari ini</h1>
+    <div class="container-1">
+      <div class="proflie">
+        <img
+          class="gambar-profile"
+          src="./asset/18b9ffb2a8a791d50213a9d595c4dd52.jpg"
+          alt=""
+        />
+        <div class="vertical">
+          <span class="pertama">vittorio veneto </span>
+          <span class="kota">tangerang selatan</span>
+        </div>
+      </div>
+      <div class="container">
+        <span class="solusi">solusi dari</span>
+        <span class="masalah">semua masalah</span>
+        <span class="adalah">adalah</span>
+        <span class="sholat">sholat</span>
+      </div>
+      <div class="icon">
+        <div class="kelompok">
+          <img class="tombol" src="./asset/heart.png" alt="" />
+          <img class="tombol" src="./asset/comment.png" alt="" />
+          <img class="tombol" src="./asset/send.png" alt="" />
+        </div>
+
+        <img class="tombol" src="./asset/bookmark.png" alt="" />
+      </div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam animi
+        dolores sed? Inventore veritatis libero veniam magnam distinctio, nihil
+        magni tempore vitae laborum eveniet cupiditate numquam ex eius delectus
+        perferendis vel quas recusandae! Delectus repellendus fugit corrupti
+        aliquid cum? Quo in dolorum minima illo modi a porro hic fuga at
+        accusantium debitis quae inventore consectetur ipsum provident quas,
+        laudantium voluptatem nam, corrupti libero. Officiis tenetur magnam cum
+        corrupti. Eaque ipsa aliquid necessitatibus quam veritatis maxime
+        deserunt enim at quibusdam qui, inventore maiores beatae officia? Illo
+        omnis placeat, inventore sit incidunt sint, reprehenderit illum eaque,
+        similique delectus quas sequi! Sint, ab?
+      </p>
+    </div>
+  </body>
+</html>
