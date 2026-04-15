@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Invictus Super League</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: radial-gradient(circle at top, #0b1220, #020617);
+        color: white;
+        animation: fadeIn 0.6s ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* CARD */
+      .card {
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        transition: 0.3s;
+        animation: slideUp 0.5s ease;
+      }
+      .card:hover {
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* BUTTON */
+      .btn {
+        transition: 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn:hover {
+        transform: scale(1.07);
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+      }
+      .btn:active {
+        transform: scale(0.95);
+      }
+      .btn::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: 0.6s;
+      }
+      .btn:hover::after {
+        left: 100%;
+      }
+
+      /* SCROLL */
+      .scroll-box {
+        max-height: 260px;
+        overflow-y: auto;
+        padding-right: 8px;
+        scrollbar-width: thin;
+        scrollbar-color: #3b82f6 transparent;
+      }
+      .scroll-box::-webkit-scrollbar {
+        width: 8px;
+      }
+      .scroll-box::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #3b82f6, #1d4ed8);
+        border-radius: 20px;
+        box-shadow: 0 0 12px rgba(59, 130, 246, 0.7);
+      }
+
+      /* TABLE + LIST */
+      tr {
+        animation: fadeRow 0.4s ease;
+      }
+      @keyframes fadeRow {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      li {
+        animation: fadeList 0.3s ease;
+      }
+      @keyframes fadeList {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .glow {
+        text-shadow: 0 0 15px #3b82f6;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="text-center py-10">
+      <h1 class="text-5xl font-bold text-blue-400 glow">
+        INVICTUS SUPER LEAGUE
+      </h1>
+    </div>
+
+    <!-- PUBLIC -->
+    <div id="publicPage" class="max-w-6xl mx-auto px-4 space-y-6">
+      <div class="card p-5">
+        <h2>🏆 Klasemen</h2>
+        <table class="w-full">
+          <tbody id="tableStandings"></tbody>
+        </table>
+      </div>
+
+      <div class="card p-4">
+        <h2>📅 Matchweek</h2>
+        <div id="mwButtonsPublic" class="flex gap-2 flex-wrap"></div>
+      </div>
+
+      <div class="card p-5">
+        <h2>📅 Jadwal</h2>
+        <ul id="publicMatches" class="scroll-box space-y-2"></ul>
+      </div>
+
+      <div class="card p-5">
+        <h2>⚽ Hasil</h2>
+        <ul id="publicResults" class="scroll-box space-y-2"></ul>
+      </div>
+
+      <div class="text-center pb-10">
+        <button id="btnLogin" class="btn bg-blue-500 px-6 py-2 rounded">
+          Login
+        </button>
+      </div>
+    </div>
+
+    <!-- LOGIN -->
+    <div
+      id="loginPage"
+      class="hidden flex items-center justify-center h-screen"
+    >
+      <div class="card p-6 w-80">
+        <input
+          id="passwordInput"
+          type="password"
+          class="w-full p-2 text-black rounded mb-3"
+        />
+        <button id="btnDoLogin" class="btn w-full bg-blue-500 p-2 rounded">
+          Login
+        </button>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="hidden max-w-6xl mx-auto p-4 space-y-6">
+      <div class="flex justify-between">
+        <h1 class="text-2xl glow">Dashboard</h1>
+        <button id="btnLogout" class="btn bg-red-500 px-4 py-2 rounded">
+          Logout
+        </button>
+      </div>
+
+      <div class="flex gap-3">
+        <button id="btnExport" class="btn bg-purple-500 px-4 py-2 rounded">
+          Export
+        </button>
+        <label class="btn bg-yellow-500 px-4 py-2 rounded cursor-pointer">
+          Import
+          <input type="file" id="importFile" hidden />
+        </label>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- TEAM -->
+        <div class="card p-4">
+          <h2>👥 Tim</h2>
+
+          <input id="teamName" class="w-full p-2 text-black rounded mb-2" />
+
+          <div class="flex gap-2 mb-2">
+            <label class="btn bg-blue-500 px-3 py-1 rounded cursor-pointer">
+              SVG
+              <input id="teamLogo" type="file" accept=".svg" hidden />
+            </label>
+            <img id="logoPreview" class="w-8 h-8 hidden bg-white p-1 rounded" />
+          </div>
+
+          <button id="btnAddTeam" class="btn w-full bg-green-500 py-2 rounded">
+            Tambah
+          </button>
+
+          <ul id="adminTeams" class="scroll-box mt-3 space-y-2"></ul>
+        </div>
+
+        <!-- MATCH -->
+        <div class="card p-4">
+          <h2>📅 Jadwal</h2>
+
+          <select id="teamA" class="p-2 text-black rounded"></select>
+          <select id="teamB" class="p-2 text-black rounded"></select>
+
+          <input
+            id="matchWeek"
+            type="number"
+            class="w-full p-2 text-black rounded mt-2"
+          />
+          <input
+            id="matchTime"
+            type="datetime-local"
+            class="w-full p-2 text-black rounded mt-2"
+          />
+
+          <button
+            id="btnAddMatch"
+            class="btn w-full bg-blue-500 mt-2 p-2 rounded"
+          >
+            Tambah
+          </button>
+
+          <ul id="adminMatches" class="scroll-box mt-3 space-y-2"></ul>
+        </div>
+
+        <!-- RESULT -->
+        <div class="card p-4 md:col-span-2">
+          <h2>⚽ Hasil</h2>
+
+          <div id="mwButtonsDash" class="flex gap-2 mb-3 flex-wrap"></div>
+
+          <select
+            id="matchSelect"
+            class="w-full p-2 text-black rounded"
+          ></select>
+
+          <div class="flex gap-2 mt-2">
+            <input
+              id="scoreA"
+              type="number"
+              class="w-full p-2 text-black rounded"
+            />
+            <input
+              id="scoreB"
+              type="number"
+              class="w-full p-2 text-black rounded"
+            />
+            <button id="btnAddResult" class="btn bg-green-500 px-4 rounded">
+              ✔
+            </button>
+          </div>
+
+          <ul id="adminResults" class="scroll-box mt-3 space-y-2"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const ADMIN_PASSWORD = "12345";
+
+      let teamsRaw = JSON.parse(localStorage.getItem("teams")) || [];
+      let teams = teamsRaw.map((t) =>
+        typeof t === "string" ? { name: t, logo: "" } : t,
+      );
+
+      let matches = JSON.parse(localStorage.getItem("matches")) || [];
+      let results = JSON.parse(localStorage.getItem("results")) || [];
+
+      let selectedWeek = "all";
+
+      const save = () => {
+        localStorage.setItem("teams", JSON.stringify(teams));
+        localStorage.setItem("matches", JSON.stringify(matches));
+        localStorage.setItem("results", JSON.stringify(results));
+      };
+
+      /* LOGIN */
+      btnLogin.onclick = () => {
+        publicPage.classList.add("hidden");
+        loginPage.classList.remove("hidden");
+      };
+      btnDoLogin.onclick = () => {
+        if (passwordInput.value === ADMIN_PASSWORD) {
+          loginPage.classList.add("hidden");
+          dashboard.classList.remove("hidden");
+          render();
+        } else alert("Password salah");
+      };
+      btnLogout.onclick = () => {
+        dashboard.classList.add("hidden");
+        publicPage.classList.remove("hidden");
+        render();
+      };
+
+      /* SVG */
+      teamLogo.onchange = () => {
+        let f = teamLogo.files[0];
+        if (!f || f.type !== "image/svg+xml") {
+          alert("Harus SVG");
+          return;
+        }
+        let r = new FileReader();
+        r.onload = (e) => {
+          logoPreview.src = e.target.result;
+          logoPreview.classList.remove("hidden");
+        };
+        r.readAsDataURL(f);
+      };
+
+      /* TEAM */
+      btnAddTeam.onclick = () => {
+        let n = teamName.value.trim();
+        if (!n || teams.find((t) => t.name === n)) return;
+
+        let file = teamLogo.files[0];
+        if (file) {
+          let r = new FileReader();
+          r.onload = (e) => {
+            teams.push({ name: n, logo: e.target.result });
+            save();
+            render();
+          };
+          r.readAsDataURL(file);
+        } else {
+          teams.push({ name: n, logo: "" });
+          save();
+          render();
+        }
+
+        teamName.value = "";
+        teamLogo.value = "";
+        logoPreview.classList.add("hidden");
+      };
+
+      function deleteTeam(i) {
+        let t = teams[i].name;
+        teams.splice(i, 1);
+        matches = matches.filter((m) => m.a !== t && m.b !== t);
+        results = results.filter((r) => r.a !== t && r.b !== t);
+        save();
+        render();
+      }
+
+      /* MATCH */
+      btnAddMatch.onclick = () => {
+        if (!teamA.value || !teamB.value || teamA.value === teamB.value) return;
+        matches.push({
+          id: Date.now() + "",
+          a: teamA.value,
+          b: teamB.value,
+          week: +matchWeek.value,
+          time: matchTime.value,
+        });
+        save();
+        render();
+      };
+
+      function deleteMatch(id) {
+        matches = matches.filter((m) => m.id !== id);
+        results = results.filter((r) => r.id !== id);
+        save();
+        render();
+      }
+
+      /* RESULT */
+      btnAddResult.onclick = () => {
+        let m = matches.find((x) => x.id === matchSelect.value);
+        if (!m) return;
+        results = results.filter((r) => r.id !== m.id);
+        results.push({ ...m, scoreA: +scoreA.value, scoreB: +scoreB.value });
+        save();
+        render();
+      };
+
+      function deleteResult(id) {
+        results = results.filter((r) => r.id !== id);
+        save();
+        render();
+      }
+
+      /* EXPORT */
+      btnExport.onclick = () => {
+        let blob = new Blob([JSON.stringify({ teams, matches, results })], {
+          type: "application/json",
+        });
+        let a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "data.json";
+        a.click();
+      };
+
+      /* IMPORT */
+      importFile.onchange = (e) => {
+        let r = new FileReader();
+        r.onload = (ev) => {
+          let d = JSON.parse(ev.target.result);
+          teams = d.teams || [];
+          matches = d.matches || [];
+          results = d.results || [];
+          save();
+          render();
+        };
+        r.readAsText(e.target.files[0]);
+      };
+
+      /* RENDER */
+      function render() {
+        renderButtons();
+        renderAdmin();
+        renderPublic();
+
+        /* delay animasi list */
+        document.querySelectorAll("li").forEach((el, i) => {
+          el.style.animationDelay = i * 0.05 + "s";
+        });
+      }
+
+      /* BUTTON */
+      function renderButtons() {
+        mwButtonsPublic.innerHTML = "";
+        mwButtonsDash.innerHTML = "";
+        let weeks = [...new Set(matches.map((m) => m.week))];
+
+        function b(el, label, val) {
+          let btn = document.createElement("button");
+          btn.innerText = label;
+          btn.className = "btn bg-gray-700 px-3 py-1 rounded";
+
+          btn.onclick = () => {
+            document.body.style.opacity = ".6";
+            setTimeout(() => {
+              selectedWeek = val;
+              render();
+              document.body.style.opacity = "1";
+            }, 120);
+          };
+
+          el.appendChild(btn);
+        }
+
+        b(mwButtonsPublic, "All", "all");
+        b(mwButtonsDash, "All", "all");
+
+        weeks.forEach((w) => {
+          b(mwButtonsPublic, "Matchweek " + w, w);
+          b(mwButtonsDash, "Matchweek " + w, w);
+        });
+      }
+
+      /* ADMIN */
+      function renderAdmin() {
+        adminTeams.innerHTML = "";
+        teamA.innerHTML = "";
+        teamB.innerHTML = "";
+        matchSelect.innerHTML = "";
+        adminMatches.innerHTML = "";
+        adminResults.innerHTML = "";
+
+        teams.forEach((t, i) => {
+          adminTeams.innerHTML += `
+<li class="flex justify-between bg-gray-700 p-2 rounded">
+<div class="flex gap-2 items-center">
+<img src="${t.logo || ""}" class="w-6 h-6">
+${t.name}
+</div>
+<button onclick="deleteTeam(${i})">🗑</button>
+</li>`;
+
+          teamA.innerHTML += `<option>${t.name}</option>`;
+          teamB.innerHTML += `<option>${t.name}</option>`;
+        });
+
+        matches
+          .filter((m) => selectedWeek === "all" || m.week == selectedWeek)
+          .forEach((m) => {
+            adminMatches.innerHTML += `
+<li class="bg-gray-700 p-2 flex justify-between">
+${m.a} vs ${m.b}
+<button onclick="deleteMatch('${m.id}')">🗑</button>
+</li>`;
+            matchSelect.innerHTML += `<option value="${m.id}">${m.a} vs ${m.b}</option>`;
+          });
+
+        results
+          .filter((r) => selectedWeek === "all" || r.week == selectedWeek)
+          .forEach((r) => {
+            adminResults.innerHTML += `
+<li class="bg-gray-700 p-2 flex justify-between">
+${r.a} ${r.scoreA}-${r.scoreB} ${r.b}
+<button onclick="deleteResult('${r.id}')">🗑</button>
+</li>`;
+          });
+      }
+
+      /* PUBLIC */
+      function renderPublic() {
+        let table = {};
+        teams.forEach((t) => (table[t.name] = 0));
+
+        results.forEach((r) => {
+          if (r.scoreA > r.scoreB) table[r.a] += 3;
+          else if (r.scoreB > r.scoreA) table[r.b] += 3;
+          else {
+            table[r.a]++;
+            table[r.b]++;
+          }
+        });
+
+        let st = Object.entries(table).sort((a, b) => b[1] - a[1]);
+
+        tableStandings.innerHTML = "";
+        st.forEach((t, i) => {
+          let obj = teams.find((x) => x.name === t[0]);
+          let color = "";
+          if (i < 2) color = "bg-green-500/20 border-l-4 border-green-400";
+          if (i >= st.length - 2)
+            color = "bg-red-500/20 border-l-4 border-red-400";
+
+          tableStandings.innerHTML += `
+<tr class="${color}">
+<td class="p-2 flex gap-2 items-center">
+<img src="${obj?.logo || ""}" class="w-5 h-5">
+${i + 1}. ${t[0]}
+</td>
+<td>${t[1]} pts</td>
+</tr>`;
+        });
+
+        publicMatches.innerHTML = "";
+        matches
+          .filter((m) => selectedWeek === "all" || m.week == selectedWeek)
+          .forEach((m) => {
+            publicMatches.innerHTML += `
+<li class="card p-2">
+Matchweek ${m.week}<br>
+${m.a} vs ${m.b}
+</li>`;
+          });
+
+        publicResults.innerHTML = "";
+        results
+          .filter((r) => selectedWeek === "all" || r.week == selectedWeek)
+          .forEach((r) => {
+            publicResults.innerHTML += `
+<li class="card p-2">
+Matchweek ${r.week}<br>
+${r.a} ${r.scoreA}-${r.scoreB} ${r.b}
+</li>`;
+          });
+      }
+
+      render();
+    </script>
+  </body>
+</html>
